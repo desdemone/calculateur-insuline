@@ -149,6 +149,13 @@ function Page2({
             </p>
           )}
         </div>
+{insulinMealDose !== null && (
+  <p className="medical-warning">
+    ⚠️ Outil d’aide au calcul – ne remplace pas un avis médical.
+  </p>
+)}
+
+
 
         {/* 🧮 Résumé */}
         {roundedTotalDose !== null && (
@@ -156,13 +163,13 @@ function Page2({
             <h2 className="subtitle">Résumé du calcul</h2>
 
             <p>
-              Dose repas :
+              Dose repas estimée:
               <strong> {insulinMealDose.toFixed(2)} U</strong>
             </p>
 
             {correctionDose > 0 && (
               <p>
-                Correction glycémique :
+                Correction glycémique conseillée:
                 <strong> {correctionDose.toFixed(2)} U</strong>
               </p>
             )}
@@ -170,7 +177,7 @@ function Page2({
             <hr />
 
             <p style={{ fontSize: "22px", textAlign: "center" }}>
-              👉 Dose totale recommandée :
+              👉  Estimation de la dose totale  :
               <strong> {roundedTotalDose} U</strong>
             </p>
           </div>

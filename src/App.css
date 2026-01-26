@@ -198,3 +198,20 @@ select {
     font-size: 14px;
   }
 }
+.medical-disclaimer {
+  max-width: 520px;
+  margin: 12px auto 32px;
+  padding: 12px 16px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #4A3A5E;
+  background-color: rgba(255, 255, 255, 0.45);
+  border-left: 4px solid #8A1C1C;
+  border-radius: 8px;
+}
+
+.medical-disclaimer-title {
+  margin: 0 0 6px;
+  font-weight: 600;
+  color: #8A1C1C;
+}

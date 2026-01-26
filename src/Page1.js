@@ -19,6 +19,22 @@ function Page1({
         title="Mon outil de calcul de dose d’insuline"
         subtitle="Paramètres personnels"
       />
+<div className="medical-disclaimer">
+  <p className="medical-disclaimer-title">
+    ⚠️ Avertissement important
+  </p>
+
+  <p>
+    Cet outil est fourni à titre informatif et pédagogique uniquement.
+    Il ne remplace en aucun cas l’avis d’un professionnel de santé.
+  </p>
+
+  <p>
+    Les calculs proposés sont des estimations basées sur les paramètres
+    saisis par l’utilisateur. Toute décision concernant un traitement
+    insulinique doit être validée avec un médecin ou un diabétologue.
+  </p>
+</div>
 
       <div className="section">
 

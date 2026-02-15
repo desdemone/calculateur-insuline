@@ -16,50 +16,50 @@ function Page1({
   return (
     <div className="App">
       <Header
-        title="Mon outil de calcul de dose d’insuline"
-        subtitle="Paramètres personnels"
+        title="Outil de calcul de dose d’insuline"
+        
       />
-<div className="medical-disclaimer">
-  <p className="medical-disclaimer-title">
-    ⚠️ Avertissement important
-  </p>
-
-  <p>
-    Cet outil est fourni à titre informatif et pédagogique uniquement.
-    Il ne remplace en aucun cas l’avis d’un professionnel de santé.
-  </p>
-
-  <p>
-    Les calculs proposés sont des estimations basées sur les paramètres
-    saisis par l’utilisateur. Toute décision concernant un traitement
-    insulinique doit être validée avec un médecin ou un diabétologue.
-  </p>
-</div>
 
       <div className="section">
 
+        <div className="medical-disclaimer">
+          <p className="medical-disclaimer-title">
+            ⚠️ Avertissement important
+          </p>
+          <p>
+            Cet outil est fourni à titre informatif et pédagogique uniquement.
+            Il ne remplace en aucun cas l’avis d’un professionnel de santé.
+          </p>
+          <p>
+            Toute décision concernant un traitement insulinique doit être validée
+            avec un médecin ou un diabétologue.
+          </p>
+        </div>
+
         <div className="card">
+          <h2 className="subtitle">Mes paramètres personnels</h2>
+
           <div className="field">
-            <label>Sensibilité (mg/dl / U)</label>
+            <label>Sensibilité </label>
             <input
               type="number"
               value={sensitivity}
               onChange={(e) => setSensitivity(Number(e.target.value))}
             />
+
           </div>
-<div className="field">
-  <label>Glycémie actuelle</label>
-  <div className="input-unit">
-    <input
-      type="number"
-      min="40"
-      max="500"
-      value={glycemia}
-      onChange={(e) => setGlycemia(Number(e.target.value))}
-    />
-    <span className="unit">mg/dl</span>
-  </div>
-</div>
+
+          <div className="field">
+            <label>Glycémie actuelle</label>
+            <div className="input-unit">
+              <input
+                type="number"
+                value={glycemia}
+                onChange={(e) => setGlycemia(Number(e.target.value))}
+              />
+
+            </div>
+          </div>
 
           <div className="field">
             <label>Objectif glycémique</label>
@@ -90,10 +90,9 @@ function Page1({
         </div>
 
         <div className="card">
-          <h2 className="subtitle">Insuline</h2>
-
+         
           <div className="field">
-            <label>Insuline active </label>
+            <label>Insuline active</label>
             <input
               type="number"
               step="0.1"
@@ -101,8 +100,6 @@ function Page1({
               onChange={(e) => setActiveInsulin(Number(e.target.value))}
             />
           </div>
-
-         
         </div>
 
         <div className="card">
@@ -139,7 +136,7 @@ function Page1({
           </div>
         </div>
 
-        <Link to="/page2">
+        <Link to="/page2" style={{ width: "100%" }}>
           <button>Accéder au calcul</button>
         </Link>
 

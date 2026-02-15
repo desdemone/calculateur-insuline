@@ -3,15 +3,16 @@ function RatiosCard({ ratioMatin, ratioMidi, ratioSoir }) {
     <div className="card">
       <h2 className="subtitle">Vos ratios</h2>
 
-      <p style={{ marginLeft: "40px" }}>
-        Matin : {ratioMatin} U / 10 g
-      </p>
-      <p style={{ marginLeft: "40px" }}>
-        Midi : {ratioMidi} U / 10 g
-      </p>
-      <p style={{ marginLeft: "40px" }}>
-        Soir : {ratioSoir} U / 10 g
-      </p>
+      <div className="ratios-grid">
+        <span className="ratio-label">Matin</span>
+        <span>{ratioMatin} U / 10 g</span>
+
+        <span className="ratio-label">Midi</span>
+        <span>{ratioMidi} U / 10 g</span>
+
+        <span className="ratio-label">Soir</span>
+        <span>{ratioSoir} U / 10 g</span>
+      </div>
     </div>
   );
 }

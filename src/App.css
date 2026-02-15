@@ -1,122 +1,120 @@
-/* ============================= */
-/* BASE */
-/* ============================= */
+/* ===================================== */
+/* BASE – MOBILE FIRST */
+/* ===================================== */
 
 html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #E6D9F2;
   font-family: 'Inter', system-ui, sans-serif;
+  background: linear-gradient(180deg, #F4F8FC 0%, #EAF1F9 100%);
+  color: #1E2A38;
   -webkit-font-smoothing: antialiased;
 }
 
 .App {
-  width: 100%;
   min-height: 100vh;
-  padding-bottom: 40px;
-}
-
-/* ============================= */
-/* HEADER */
-/* ============================= */
-
-.header {
-  padding: 56px 16px 28px;
-  text-align: center;
-}
-
-.title {
-  margin: 0;
-  font-size: 44px;
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  color: #5D3A8C;
-}
-
-.subtitle-intro {
-  margin: 10px 0 22px;
-  font-size: 17px;
-  font-weight: 500;
-  color: #4A3A5E;
-  text-align: center;
-}
-
-/* ============================= */
-/* SECTION */
-/* ============================= */
-
-.section {
+  padding: 24px 16px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* ============================= */
+/* ===================================== */
+/* SECTION WRAPPER */
+/* ===================================== */
+
+.section {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===================================== */
+/* HEADER */
+/* ===================================== */
+
+.header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.title {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 600;
+  color: #1746A2;
+  line-height: 1.2;
+}
+
+.subtitle-intro {
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #5A6E87;
+}
+
+/* ===================================== */
 /* CARD */
-/* ============================= */
+/* ===================================== */
 
 .card {
-  background-color: #FBF9FD;
-  border-radius: 18px;
-  padding: 28px;
-
-  max-width: 360px;
   width: 100%;
-
-  margin: 0 auto 28px;
-
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 22px;
   box-shadow:
-    0 10px 30px rgba(93, 58, 140, 0.10),
-    0 0 0 1px rgba(93, 58, 140, 0.05);
+    0 12px 28px rgba(23, 70, 162, 0.08),
+    0 0 0 1px rgba(23, 70, 162, 0.05);
 }
 
 .subtitle {
-  margin-bottom: 20px;
-  font-size: 19px;
-  font-weight: 600;
-  color: #5D3A8C;
   text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: #1746A2;
 }
 
-/* ============================= */
+/* ===================================== */
 /* FIELDS */
-/* ============================= */
+/* ===================================== */
 
 .field {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 label {
   display: block;
-  margin-bottom: 6px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  color: #5D3A8C;
+  margin-bottom: 6px;
+  color: #1746A2;
 }
 
 input,
 select {
   width: 100%;
   height: 42px;
+  border-radius: 12px;
+  border: 1px solid #D7E2F0;
   padding: 0 12px;
   font-size: 15px;
-  border-radius: 10px;
-  border: 1px solid #D6CDEA;
-  background-color: #FFFFFF;
+  background: #F8FBFF;
   box-sizing: border-box;
-  transition: 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 input:focus,
 select:focus {
   outline: none;
-  border-color: #5D3A8C;
-  box-shadow: 0 0 0 2px rgba(93, 58, 140, 0.12);
+  border-color: #2D6CDF;
+  box-shadow: 0 0 0 3px rgba(45, 108, 223, 0.15);
+  background: #FFFFFF;
 }
-
-/* Units */
 
 .input-unit {
   display: flex;
@@ -125,139 +123,84 @@ select:focus {
 }
 
 .unit {
-  font-size: 13px;
-  color: #6F5A8A;
-  white-space: nowrap;
+  font-size: 12px;
+  color: #5A6E87;
 }
 
-/* ============================= */
-/* RATIOS GRID */
-/* ============================= */
+/* ===================================== */
+/* MEDICAL DISCLAIMER */
+/* ===================================== */
 
-.ratios-grid {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  row-gap: 14px;
-  column-gap: 10px;
-  align-items: center;
+.medical-disclaimer {
+  width: 100%;
+  background: #FFF6F6;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 22px;
+  border-left: 4px solid #C0392B;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #6E2B2B;
 }
 
-.ratio-label {
-  font-size: 14px;
-  font-weight: 500;
-  color: #6F5A8A;
+.medical-disclaimer-title {
+  font-weight: 600;
+  margin-bottom: 6px;
 }
 
-/* ============================= */
+/* ===================================== */
 /* BUTTON */
-/* ============================= */
+/* ===================================== */
 
 button {
   width: 100%;
-  height: 44px;
-  margin-top: 22px;
+  height: 46px;
+  border-radius: 14px;
+  border: none;
   font-size: 15px;
   font-weight: 600;
-  background-color: #5D3A8C;
+  background: linear-gradient(135deg, #2D6CDF 0%, #1746A2 100%);
   color: white;
-  border: none;
-  border-radius: 14px;
   cursor: pointer;
   transition: 0.2s ease;
 }
 
 button:hover {
-  background-color: #7A54B2;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(23, 70, 162, 0.25);
+}
+/* ===================================== */
+/* RATIOS GRID */
+/* ===================================== */
+
+.ratios-grid {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  row-gap: 12px;
+  column-gap: 10px;
+  align-items: center;
 }
 
-/* ============================= */
-/* MEDICAL DISCLAIMER */
-/* ============================= */
-
-.medical-disclaimer {
-  max-width: 360px;
-  width: 100%;
-  margin: 0 auto 26px;
-  padding: 14px 18px;
-
-  font-size: 12.5px;
-  line-height: 1.45;
-  text-align: center;
-
-  color: #4A3A5E;
-  background-color: rgba(255,255,255,0.55);
-  border-radius: 14px;
-  border: 1px solid rgba(93, 58, 140, 0.08);
+.ratio-label {
+  font-weight: 500;
+  color: #1746A2;
 }
 
-.medical-disclaimer-title {
-  margin: 0 0 6px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #5D3A8C;
-}
+/* ===================================== */
+/* DESKTOP */
+/* ===================================== */
 
-/* ============================= */
-/* RESPONSIVE MOBILE */
-/* ============================= */
-
-@media (max-width: 480px) {
-
-  .header {
-    padding: 34px 16px 18px;
-  }
+@media (min-width: 768px) {
 
   .title {
-    font-size: 30px;
-    line-height: 1.2;
+    font-size: 36px;
   }
 
   .subtitle-intro {
-    font-size: 15px;
+    font-size: 16px;
   }
 
-  .subtitle {
-    font-size: 17px;
-  }
-
-  .card {
-    max-width: 92%;
-    padding: 20px 16px;
-    margin-bottom: 20px;
-    border-radius: 16px;
-  }
-
-  .medical-disclaimer {
-    max-width: 92%;
-    padding: 12px 14px;
-    font-size: 12px;
-  }
-
-  label {
-    font-size: 13px;
-  }
-
-  input,
-  select {
-    height: 38px;
-    font-size: 14px;
-  }
-
-  .input-unit {
-    flex-wrap: wrap;
-  }
-
-  .unit {
-    margin-top: 4px;
-  }
-
-  button {
-    height: 42px;
-    font-size: 14px;
-  }
-
-  .ratios-grid {
-    grid-template-columns: 1fr;
+  .section {
+    max-width: 480px;
   }
 }

@@ -44,7 +44,7 @@ function Page1({
 
         <div className="card">
           <div className="field">
-            <label>Sensibilité (mg/dl / U)</label>
+            <label>Sensibilité </label>
             <input
               type="number"
               min="0"

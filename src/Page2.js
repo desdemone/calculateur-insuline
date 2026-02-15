@@ -177,7 +177,7 @@ function Page2({
             <hr />
 
             <p style={{ fontSize: "22px", textAlign: "center" }}>
-              👉  Estimation de la dose totale  :
+              👉  Estimation de la dose totale  
               <strong> {roundedTotalDose} U</strong>
             </p>
           </div>

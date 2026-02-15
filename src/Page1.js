@@ -13,60 +13,65 @@ function Page1({
   activeInsulin, setActiveInsulin,
   glycemia, setGlycemia,
 }) {
+
+  const handlePositiveChange = (setter) => (e) => {
+    const value = e.target.value;
+    if (value === "" || Number(value) >= 0) {
+      setter(value);
+    }
+  };
+
   return (
     <div className="App">
       <Header
-        title="Outil de calcul de dose d’insuline"
-        
+        title="Mon outil de calcul de dose d’insuline"
+        subtitle="Paramètres personnels"
       />
+
+      <div className="medical-disclaimer">
+        <div>
+          <p className="medical-disclaimer-title">
+            Avertissement important
+          </p>
+          <p>
+            Cet outil est fourni à titre informatif uniquement.
+            Il ne remplace pas l’avis d’un professionnel de santé.
+          </p>
+        </div>
+      </div>
 
       <div className="section">
 
-        <div className="medical-disclaimer">
-          <p className="medical-disclaimer-title">
-            ⚠️ Avertissement important
-          </p>
-          <p>
-            Cet outil est fourni à titre informatif et pédagogique uniquement.
-            Il ne remplace en aucun cas l’avis d’un professionnel de santé.
-          </p>
-          <p>
-            Toute décision concernant un traitement insulinique doit être validée
-            avec un médecin ou un diabétologue.
-          </p>
-        </div>
-
         <div className="card">
-          <h2 className="subtitle">Mes paramètres personnels</h2>
-
           <div className="field">
-            <label>Sensibilité </label>
+            <label>Sensibilité (mg/dl / U)</label>
             <input
               type="number"
+              min="0"
+              step="0.1"
               value={sensitivity}
-              onChange={(e) => setSensitivity(Number(e.target.value))}
+              onChange={handlePositiveChange(setSensitivity)}
             />
-
           </div>
 
           <div className="field">
             <label>Glycémie actuelle</label>
-            <div className="input-unit">
-              <input
-                type="number"
-                value={glycemia}
-                onChange={(e) => setGlycemia(Number(e.target.value))}
-              />
-
-            </div>
+            <input
+              type="number"
+              min="40"
+              max="500"
+              value={glycemia}
+              onChange={handlePositiveChange(setGlycemia)}
+            />
           </div>
 
           <div className="field">
             <label>Objectif glycémique</label>
             <input
               type="number"
+              min="0"
               value={glucoseTarget}
-              onChange={(e) => setGlucoseTarget(Number(e.target.value))}
+              onChange={handlePositiveChange(setGlucoseTarget)}
             />
           </div>
 
@@ -74,8 +79,9 @@ function Page1({
             <label>Glycémie minimale</label>
             <input
               type="number"
+              min="0"
               value={glucoseMin}
-              onChange={(e) => setGlucoseMin(Number(e.target.value))}
+              onChange={handlePositiveChange(setGlucoseMin)}
             />
           </div>
 
@@ -83,21 +89,24 @@ function Page1({
             <label>Glycémie maximale</label>
             <input
               type="number"
+              min="0"
               value={glucoseMax}
-              onChange={(e) => setGlucoseMax(Number(e.target.value))}
+              onChange={handlePositiveChange(setGlucoseMax)}
             />
           </div>
         </div>
 
         <div className="card">
-         
+          <h2 className="subtitle">Insuline</h2>
+
           <div className="field">
             <label>Insuline active</label>
             <input
               type="number"
+              min="0"
               step="0.1"
               value={activeInsulin}
-              onChange={(e) => setActiveInsulin(Number(e.target.value))}
+              onChange={handlePositiveChange(setActiveInsulin)}
             />
           </div>
         </div>
@@ -109,9 +118,10 @@ function Page1({
             <label>Matin</label>
             <input
               type="number"
+              min="0"
               step="0.1"
               value={ratioMatin}
-              onChange={(e) => setRatioMatin(Number(e.target.value))}
+              onChange={handlePositiveChange(setRatioMatin)}
             />
           </div>
 
@@ -119,9 +129,10 @@ function Page1({
             <label>Midi</label>
             <input
               type="number"
+              min="0"
               step="0.1"
               value={ratioMidi}
-              onChange={(e) => setRatioMidi(Number(e.target.value))}
+              onChange={handlePositiveChange(setRatioMidi)}
             />
           </div>
 
@@ -129,14 +140,15 @@ function Page1({
             <label>Soir</label>
             <input
               type="number"
+              min="0"
               step="0.1"
               value={ratioSoir}
-              onChange={(e) => setRatioSoir(Number(e.target.value))}
+              onChange={handlePositiveChange(setRatioSoir)}
             />
           </div>
         </div>
 
-        <Link to="/page2" style={{ width: "100%" }}>
+        <Link to="/page2">
           <button>Accéder au calcul</button>
         </Link>
 

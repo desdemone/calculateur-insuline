@@ -6,22 +6,29 @@ import "./App.css";
 function Page2({
   sensitivity,
   glucoseTarget,
-  glucoseMax,
-  glucoseMin,
   ratioMatin,
   ratioMidi,
   ratioSoir,
   glycemia,
   activeInsulin,
 }) {
+
   /* ===== États locaux ===== */
   const [carbs100g, setCarbs100g] = useState("");
   const [quantity, setQuantity] = useState("");
   const [moment, setMoment] = useState("matin");
 
+  /* ===== Protection valeurs positives ===== */
+  const handlePositiveChange = (setter) => (e) => {
+    const value = e.target.value;
+    if (value === "" || Number(value) >= 0) {
+      setter(value);
+    }
+  };
+
   /* ===== Calcul glucides ===== */
   const carbsTotal =
-    carbs100g && quantity
+    carbs100g !== "" && quantity !== ""
       ? (Number(carbs100g) * Number(quantity)) / 100
       : null;
 
@@ -31,22 +38,31 @@ function Page2({
   if (moment === "midi") ratioSelected = ratioMidi;
   if (moment === "soir") ratioSelected = ratioSoir;
 
+  /* ===== Conversion sécurisée ===== */
+  const numericSensitivity = Math.max(0, Number(sensitivity));
+  const numericTarget = Math.max(0, Number(glucoseTarget));
+  const numericGlycemia = Math.max(0, Number(glycemia));
+  const numericActiveInsulin = Math.max(0, Number(activeInsulin));
+  const numericRatio = Math.max(0, Number(ratioSelected));
+
   /* ===== Dose repas ===== */
   const insulinMealDose =
-    carbsTotal !== null && ratioSelected > 0
-      ? (carbsTotal * ratioSelected) / 10
+    carbsTotal !== null && numericRatio > 0
+      ? (carbsTotal * numericRatio) / 10
       : null;
 
   /* ===== Correction glycémique ===== */
   const correctionDose =
-    glycemia > glucoseTarget && sensitivity > 0
+    numericGlycemia > numericTarget && numericSensitivity > 0
       ? Math.max(
-        Math.min(
-          (glycemia - glucoseTarget) / sensitivity - activeInsulin,
-          10
-        ),
-        0
-      )
+          Math.min(
+            (numericGlycemia - numericTarget) /
+              numericSensitivity -
+              numericActiveInsulin,
+            10
+          ),
+          0
+        )
       : 0;
 
   /* ===== Total ===== */
@@ -62,36 +78,41 @@ function Page2({
 
   return (
     <div className="App">
+
       <header className="header">
         <h1 className="title">Calcul des doses</h1>
       </header>
 
       <div className="section">
 
-        {/* 📊 Ratios */}
+        {/* 📊 RATIOS */}
         <RatiosCard
           ratioMatin={ratioMatin}
           ratioMidi={ratioMidi}
           ratioSoir={ratioSoir}
         />
 
-        {/* 🩸 Glycémie */}
+        {/* 🩸 GLYCÉMIE ACTUELLE */}
         <div className="card">
           <h2 className="subtitle">Glycémie actuelle</h2>
-          <p style={{ fontSize: "20px", textAlign: "center" }}>
-            <strong>{glycemia} mg/dl</strong>
+          <p style={{ textAlign: "center", fontSize: "20px" }}>
+            <strong>
+              {glycemia !== "" ? `${glycemia} mg/dl` : "—"}
+            </strong>
           </p>
         </div>
 
-        {/* 💉 Insuline active */}
+        {/* 💉 INSULINE ACTIVE */}
         <div className="card">
           <h2 className="subtitle">Insuline active</h2>
-          <p style={{ fontSize: "18px", textAlign: "center" }}>
-            <strong>{activeInsulin} U</strong>
+          <p style={{ textAlign: "center", fontSize: "18px" }}>
+            <strong>
+              {activeInsulin !== "" ? `${activeInsulin} U` : "—"}
+            </strong>
           </p>
         </div>
 
-        {/* 🍽️ Calcul glucides */}
+        {/* 🍽️ CALCUL GLUCIDES */}
         <div className="card">
           <h2 className="subtitle">Calculateur de glucides</h2>
 
@@ -108,26 +129,22 @@ function Page2({
 
           <div className="field">
             <label>Glucides pour 100 g</label>
-            <div className="input-unit">
-              <input
-                type="number"
-                value={carbs100g}
-                onChange={(e) => setCarbs100g(e.target.value)}
-              />
-              <span className="unit">g</span>
-            </div>
+            <input
+              type="number"
+              min="0"
+              value={carbs100g}
+              onChange={handlePositiveChange(setCarbs100g)}
+            />
           </div>
 
           <div className="field">
             <label>Quantité consommée</label>
-            <div className="input-unit">
-              <input
-                type="number"
-                value={quantity}
-                onChange={(e) => setQuantity(e.target.value)}
-              />
-              <span className="unit">g</span>
-            </div>
+            <input
+              type="number"
+              min="0"
+              value={quantity}
+              onChange={handlePositiveChange(setQuantity)}
+            />
           </div>
 
           <div className="field">
@@ -149,27 +166,65 @@ function Page2({
             </p>
           )}
         </div>
+
+        {/* ⚠️ AVERTISSEMENT */}
         {insulinMealDose !== null && (
-          <p className="medical-warning">
-            ⚠️ Outil d’aide au calcul – ne remplace pas un avis médical.
-          </p>
-        )}
+  <div className="medical-disclaimer">
+    <div className="medical-warning-header">
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="warning-icon"
+      >
+        <path
+          d="M12 9V13"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+        <circle
+          cx="12"
+          cy="17"
+          r="1"
+          fill="currentColor"
+        />
+        <path
+          d="M10.29 3.86L1.82 18A2 2 0 003.55 21H20.45A2 2 0 0022.18 18L13.71 3.86A2 2 0 0010.29 3.86Z"
+          stroke="currentColor"
+          strokeWidth="2"
+        />
+      </svg>
+
+      <span className="medical-disclaimer-title">
+        Avertissement
+      </span>
+    </div>
+
+    <p>
+      Outil d’aide au calcul — ne remplace pas un avis médical.
+      Toute décision thérapeutique doit être validée avec un professionnel de santé.
+    </p>
+  </div>
+)}
 
 
 
-        {/* 🧮 Résumé */}
+        {/* 🧮 RÉSUMÉ */}
         {roundedTotalDose !== null && (
           <div className="card">
             <h2 className="subtitle">Résumé du calcul</h2>
 
             <p>
-              Dose repas estimée:
+              Dose repas estimée :
               <strong> {insulinMealDose.toFixed(2)} U</strong>
             </p>
 
             {correctionDose > 0 && (
               <p>
-                Correction glycémique conseillée:
+                Correction glycémique :
                 <strong> {correctionDose.toFixed(2)} U</strong>
               </p>
             )}
@@ -177,13 +232,13 @@ function Page2({
             <hr />
 
             <p style={{ fontSize: "22px", textAlign: "center" }}>
-              👉  Estimation de la dose totale  
+              👉 Estimation de la dose totale :
               <strong> {roundedTotalDose} U</strong>
             </p>
           </div>
         )}
 
-        {/* 🔙 Retour */}
+        {/* 🔙 RETOUR */}
         <Link to="/">
           <button>Retour aux paramètres</button>
         </Link>

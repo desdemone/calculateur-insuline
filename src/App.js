@@ -5,17 +5,16 @@ import Page2 from "./Page2";
 
 function App() {
   // États globaux (NOMBRES UNIQUEMENT)
-  const [sensitivity, setSensitivity] = useState(30);       // mg/dl / U
-  const [glucoseTarget, setGlucoseTarget] = useState(110);  // mg/dl
-  const [glucoseMax, setGlucoseMax] = useState(180);        // mg/dl
-  const [glucoseMin, setGlucoseMin] = useState(70);         // mg/dl
+const [sensitivity, setSensitivity] = useState("");
+const [glucoseTarget, setGlucoseTarget] = useState("");
+const [glucoseMin, setGlucoseMin] = useState("");
+const [glucoseMax, setGlucoseMax] = useState("");
+const [ratioMatin, setRatioMatin] = useState("");
+const [ratioMidi, setRatioMidi] = useState("");
+const [ratioSoir, setRatioSoir] = useState("");
+const [activeInsulin, setActiveInsulin] = useState("");
+const [glycemia, setGlycemia] = useState("");
 
-  const [activeInsulin, setActiveInsulin] = useState(0);
-  const [glycemia, setGlycemia] = useState(110); // mg/dl
-
-  const [ratioMatin, setRatioMatin] = useState(1.7);
-  const [ratioMidi, setRatioMidi] = useState(1.6);
-  const [ratioSoir, setRatioSoir] = useState(1.6);
 
 const router = createBrowserRouter([
     {

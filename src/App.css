@@ -128,25 +128,34 @@ select:focus {
 }
 
 /* ===================================== */
-/* MEDICAL DISCLAIMER */
+/* MEDICAL DISCLAIMER – PREMIUM VERSION */
 /* ===================================== */
 
 .medical-disclaimer {
   width: 100%;
-  background: #FFF6F6;
+  max-width: 360px;
+  margin: 0 auto 22px;
+
+  background: linear-gradient(180deg, #F8FBFF 0%, #EDF4FC 100%);
   border-radius: 16px;
-  padding: 16px;
-  margin-bottom: 22px;
-  border-left: 4px solid #C0392B;
-  font-size: 12px;
-  line-height: 1.5;
-  color: #6E2B2B;
+  padding: 18px;
+
+  border-left: 4px solid #2D6CDF;
+
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: #2B3E55;
+
+  box-shadow:
+    0 8px 20px rgba(23, 70, 162, 0.06);
 }
 
 .medical-disclaimer-title {
   font-weight: 600;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  color: #1746A2;
 }
+
 
 /* ===================================== */
 /* BUTTON */
@@ -204,3 +213,14 @@ button:hover {
     max-width: 480px;
   }
 }
+@media (max-width: 480px) {
+
+  .medical-disclaimer,
+  .medical-warning {
+    padding: 14px;
+    font-size: 12px;
+    border-radius: 14px;
+  }
+
+}
+

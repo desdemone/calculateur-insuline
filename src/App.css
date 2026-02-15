@@ -1,4 +1,7 @@
-/* Base */
+/* ============================= */
+/* BASE */
+/* ============================= */
+
 html,
 body {
   margin: 0;
@@ -12,7 +15,10 @@ body {
   min-height: 100vh;
 }
 
-/* Header */
+/* ============================= */
+/* HEADER */
+/* ============================= */
+
 .header {
   padding: 64px 16px 32px;
   text-align: center;
@@ -27,27 +33,33 @@ body {
   color: #5D3A8C;
 }
 
-/* Section */
+.subtitle-intro {
+  margin: 12px 0 24px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #4A3A5E;
+  text-align: center;
+}
+
+/* ============================= */
+/* SECTION */
+/* ============================= */
+
 .section {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.subtitle-intro {
-  margin: 0 0 16px;
-  font-size: 30px;        /* ⬆️ légèrement plus grand */
-  font-weight: 500;       /* un peu plus présent */
-  color: #4A3A5E;
-  text-align: center;
-}
+/* ============================= */
+/* CARD */
+/* ============================= */
 
-/* Card */
 .card {
   background-color: #FBF9FD;
   border-radius: 16px;
   padding: 32px;
-  max-width: 400px;   /* ⬅️ resserré */
+  max-width: 400px;
   width: 100%;
   margin-bottom: 32px;
   box-shadow:
@@ -56,48 +68,55 @@ body {
 }
 
 .subtitle {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   font-size: 20px;
   font-weight: 600;
   color: #5D3A8C;
   text-align: center;
 }
 
-/* Fields */
+/* ============================= */
+/* FIELDS */
+/* ============================= */
+
 .field {
   margin-bottom: 20px;
 }
 
+/* Labels */
 label {
   display: block;
   margin-bottom: 6px;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
   color: #5D3A8C;
 }
 
-/* Inputs + units */
-.input-unit {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-input {
+/* Inputs + Select */
+input,
+select {
   width: 100%;
-  height: 40px;
+  height: 42px;
   padding: 0 12px;
-  font-size: 15px;
+  font-size: 16px;
   border-radius: 10px;
   border: 1px solid #D6CDEA;
   background-color: #FFFFFF;
   box-sizing: border-box;
 }
 
-input:focus {
+input:focus,
+select:focus {
   outline: none;
   border-color: #5D3A8C;
   box-shadow: 0 0 0 2px rgba(93, 58, 140, 0.15);
+}
+
+/* Units */
+.input-unit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .unit {
@@ -106,7 +125,10 @@ input:focus {
   white-space: nowrap;
 }
 
-/* Ratios grid */
+/* ============================= */
+/* RATIOS GRID */
+/* ============================= */
+
 .ratios-grid {
   display: grid;
   grid-template-columns: 80px 1fr;
@@ -121,7 +143,10 @@ input:focus {
   color: #6F5A8A;
 }
 
-/* Button */
+/* ============================= */
+/* BUTTON */
+/* ============================= */
+
 button {
   width: 100%;
   height: 44px;
@@ -140,64 +165,10 @@ button:hover {
   background-color: #7A54B2;
 }
 
-/* Mobile */
-@media (max-width: 480px) {
-  .card {
-    padding: 24px 20px;
-  }
+/* ============================= */
+/* MEDICAL DISCLAIMER */
+/* ============================= */
 
-  .ratios-grid {
-    grid-template-columns: 1fr;
-  }
-}
-@media (max-width: 480px) {
-  .title {
-    font-size: 36px;
-    line-height: 1.2;
-  }
-}
-@media (max-width: 480px) {
-  .header {
-    padding: 40px 16px 24px;
-  }
-}
-select {
-  width: 100%;
-  height: 40px;
-  padding: 0 12px;
-  font-size: 15px;
-  border-radius: 10px;
-  border: 1px solid #D6CDEA;
-  background-color: #FFFFFF;
-}
-@media (max-width: 480px) {
-  .card {
-    max-width: 100%;
-    padding: 20px 16px;      /* 🔑 réduit le padding */
-    margin: 0 12px 24px;     /* 🔑 espace sur les côtés */
-    border-radius: 14px;
-  }
-}
-@media (max-width: 480px) {
-  .input-unit {
-    flex-wrap: wrap;        /* 🔑 autorise le retour à la ligne */
-  }
-
-  .unit {
-    margin-top: 4px;
-  }
-}
-@media (max-width: 480px) {
-  .subtitle {
-    font-size: 18px;
-  }
-}
-@media (max-width: 480px) {
-  button {
-    height: 42px;
-    font-size: 14px;
-  }
-}
 .medical-disclaimer {
   max-width: 520px;
   margin: 12px auto 32px;
@@ -214,4 +185,67 @@ select {
   margin: 0 0 6px;
   font-weight: 600;
   color: #8A1C1C;
+}
+
+/* ============================= */
+/* RESPONSIVE MOBILE */
+/* ============================= */
+
+@media (max-width: 480px) {
+
+  .header {
+    padding: 40px 16px 24px;
+  }
+
+  .title {
+    font-size: 34px;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .card {
+  background-color: #FBF9FD;
+  border-radius: 16px;
+  padding: 32px;
+
+  max-width: 320px;   /* 🔑 réduit largeur */
+  width: 100%;
+
+  margin: 0 auto 32px;  /* centre automatiquement */
+
+  box-shadow:
+    0 8px 24px rgba(93, 58, 140, 0.12),
+    0 0 0 1px rgba(93, 58, 140, 0.06);
+}
+
+
+  label {
+    font-size: 13px;
+  }
+
+  input,
+  select {
+    height: 38px;
+    font-size: 15px;
+  }
+
+  .input-unit {
+    flex-wrap: wrap;
+  }
+
+  .unit {
+    margin-top: 4px;
+  }
+
+  button {
+    height: 42px;
+    font-size: 14px;
+  }
+
+  .ratios-grid {
+    grid-template-columns: 1fr;
+  }
 }

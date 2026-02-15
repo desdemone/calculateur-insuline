@@ -41,12 +41,12 @@ function Page2({
   const correctionDose =
     glycemia > glucoseTarget && sensitivity > 0
       ? Math.max(
-          Math.min(
-            (glycemia - glucoseTarget) / sensitivity - activeInsulin,
-            10
-          ),
-          0
-        )
+        Math.min(
+          (glycemia - glucoseTarget) / sensitivity - activeInsulin,
+          10
+        ),
+        0
+      )
       : 0;
 
   /* ===== Total ===== */
@@ -149,11 +149,11 @@ function Page2({
             </p>
           )}
         </div>
-{insulinMealDose !== null && (
-  <p className="medical-warning">
-    ⚠️ Outil d’aide au calcul – ne remplace pas un avis médical.
-  </p>
-)}
+        {insulinMealDose !== null && (
+          <p className="medical-warning">
+            ⚠️ Outil d’aide au calcul – ne remplace pas un avis médical.
+          </p>
+        )}
 
 
 
